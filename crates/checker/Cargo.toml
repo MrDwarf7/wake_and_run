@@ -1,0 +1,49 @@
+cargo-features = [ "codegen-backend", "profile-rustflags", "trim-paths" ]
+
+[package]
+name = "checker"
+version = "0.1.0"
+edition = "2024"
+
+authors = ["MrDwarf7", "Blake B. <github.com/MrDwarf7>"]
+description = "Call to check the current power configuration of your Windows 10 machine"
+license-file = "../../LICENSE"
+readme = "../../README.md"
+
+[dependencies]
+
+windows = { workspace = true, features = ["Win32_System_Power", "Win32_Foundation"] }
+windows-sys = { workspace = true, features = ["Win32_System_Power", "Win32_Foundation"] }
+thiserror = { workspace = true }
+
+clap = { workspace = true, features = ["cargo", "derive", "env"] }
+anstyle = { workspace = true }
+
+shared = { path = "../shared"}
+
+
+[profile.dev.package."*"]
+opt-level = 3
+codegen-units = 1
+
+[profile.dev]
+opt-level = 1
+codegen-units = 256
+incremental = true
+rustflags = ["-Zthreads=16" ]
+
+codegen-backend = "cranelift"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+debug = "none"
+debug-assertions = false
+# incremental = true
+
+# trim-paths = "all"
+rustflags = ["-Zthreads=16" ]
+
+strip = "symbols" # Leave off @ w
+# lto = "fat" ## Can't use with cranelift yet
+panic = "unwind"

@@ -1,0 +1,42 @@
+cargo-features = [ "codegen-backend", "profile-rustflags", "trim-paths" ]
+
+[package]
+name = "shared"
+version = "0.1.0"
+edition = "2024"
+rust-version.workspace = true
+
+authors = ["MrDwarf7", "Blake B. <github.com/MrDwarf7>"]
+description = "Call to sleep your Windows 10 machine"
+license-file = "../../LICENSE"
+readme = "../../README.md"
+
+[dependencies]
+thiserror = { workspace = true }
+
+
+[profile.dev.package."*"]
+opt-level = 3
+codegen-units = 1
+
+[profile.dev]
+opt-level = 1
+codegen-units = 256
+incremental = true
+rustflags = ["-Zthreads=16" ]
+
+codegen-backend = "cranelift"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+debug = "none"
+debug-assertions = false
+# incremental = true
+
+# trim-paths = "all"
+rustflags = ["-Zthreads=16" ]
+
+strip = "symbols" # Leave off @ w
+# lto = "fat" ## Can't use with cranelift yet
+panic = "unwind"

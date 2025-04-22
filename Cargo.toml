@@ -1,0 +1,43 @@
+cargo-features = [ "codegen-backend", "profile-rustflags", "trim-paths" ]
+
+[workspace]
+members = [
+    "crates/*"
+]
+resolver = "2"
+package.rust-version = "1.88.0"
+
+[workspace.metadata]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+exclude = ["target"]
+
+# [profile.dev.package."*"]
+# opt-level = 3
+# codegen-units = 1
+#
+# [profile.dev]
+# opt-level = 1
+# codegen-units = 256
+# incremental = true
+#
+# [profile.release]
+# opt-level = 3
+# codegen-units = 1
+# debug = "none"
+# debug-assertions = false
+# incremental = true
+
+[workspace.dependencies]
+# Core Dependencies
+
+windows = { version = "0.61", features = ["Win32_System_Power", "Win32_Foundation", "Win32_System_Registry" ] }
+# windows = { version = "0.58", features = ["Win32_System_Power", "Win32_Foundation"] }
+windows-sys = { version = "0.59.0", features = ["Win32_System_Power", "Win32_Foundation", "Win32_System_Registry" ] }
+
+clap = { version = "4.5.37", features = ["cargo", "derive", "env"] }
+anstyle = "*"
+
+# Error handling
+thiserror = "*"
