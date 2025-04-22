@@ -61,7 +61,9 @@ jobs:
           cp target/${{ matrix.target }}/release/sleep.exe "$ARTIFACT_NAME"
           cp task_creation.ps1 "$ARTIFACT_NAME"
           cp README.md LICENSE "$ARTIFACT_NAME"
-          zip -r "${ARTIFACT_NAME}.zip" "$ARTIFACT_NAME"
+          cd "${ARTIFACT_NAME}"
+          zip -r "../${ARTIFACT_NAME}.zip" .
+          cd ..
 
       - name: "Upload artifact"
         uses: actions/upload-artifact@v4
