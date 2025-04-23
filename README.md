@@ -1,4 +1,4 @@
-# win-sleep
+# wake_and_run
 
 A lightweight Rust CLI tool to trigger sleep or hibernation on Windows systems using the Windows API (SetSuspendState). Designed for automation and power management, it supports configurable timeouts and options to control sleep behavior.
 
@@ -22,8 +22,8 @@ Administrative privileges may be required for some operations.
 Clone the repository:
 
 ```ps1
-git clone https://github.com/your-username/win-sleep.git
-cd win-sleep
+git clone https://github.com/your-username/wake_and_run.git
+cd wake_and_run
 ```
 
 ### Build and install:
@@ -35,7 +35,10 @@ cargo build --release
 #### (Optional) Copy the binary to a directory in your PATH:
 
 ```ps1
-cp target/release/win-sleep.exe C:\Windows\System32\
+$myFavTool = "sleep"
+# or
+$myFavTool = "checker"
+cp target/release/$myFavTool.exe C:\Windows\System32\
 ```
 
 ## Usage
@@ -82,7 +85,7 @@ sleep -w
 - Combine options:
 
 ```ps1
-win-sleep -t 30 -f -w
+sleep -t 30 -f -w
 ```
 
 ## Notes
