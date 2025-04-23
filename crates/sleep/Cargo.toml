@@ -45,6 +45,6 @@ debug-assertions = false
 # trim-paths = "all"
 rustflags = ["-Zthreads=16" ]
 
-strip = "symbols" # Leave off @ w
+# strip = "symbols" # Leave off @ w
 # lto = "fat" ## Can't use with cranelift yet
 panic = "unwind"
