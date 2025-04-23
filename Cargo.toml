@@ -13,22 +13,6 @@ edition = "2024"
 license = "MIT OR Apache-2.0"
 exclude = ["target"]
 
-# [profile.dev.package."*"]
-# opt-level = 3
-# codegen-units = 1
-#
-# [profile.dev]
-# opt-level = 1
-# codegen-units = 256
-# incremental = true
-#
-# [profile.release]
-# opt-level = 3
-# codegen-units = 1
-# debug = "none"
-# debug-assertions = false
-# incremental = true
-
 [workspace.dependencies]
 # Core Dependencies
 

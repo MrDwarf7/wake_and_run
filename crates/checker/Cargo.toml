@@ -21,7 +21,6 @@ anstyle = { workspace = true }
 
 shared = { path = "../shared"}
 
-
 [profile.dev.package."*"]
 opt-level = 3
 codegen-units = 1
